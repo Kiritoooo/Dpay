@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_270" data-name="矩形 270" width="32" height="32" transform="translate(565 1286)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="SVGID" width="30" height="30" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="olret-icon" transform="translate(-565 -1286)" clip-path="url(#clip-path)">
+    <g id="组_354" data-name="组 354" transform="translate(16 1157)">
+      <g id="组_353" data-name="组 353" transform="translate(550 130)">
+        <g id="组_352" data-name="组 352" transform="translate(0 0)" clip-path="url(#clip-path-2)">
+          <path id="路径_1134" data-name="路径 1134" d="M748.589,138.838h-1.665a6.661,6.661,0,0,0-13.323,0h-1.665a8.327,8.327,0,0,1,16.654,0Zm0,0" transform="translate(-725.278 -130.501)" fill="#fff"/>
+          <path id="路径_1135" data-name="路径 1135" d="M579.828,332.886l-2.66-18.114a2.572,2.572,0,0,0-2.538-2.208H555.108a2.572,2.572,0,0,0-2.538,2.208l-2.66,18.114a2.579,2.579,0,0,0,2.538,2.967h24.843a2.579,2.579,0,0,0,2.538-2.967Zm-6.682-14.415a8.328,8.328,0,0,1-16.554,0,.837.837,0,0,1,1.665-.179,6.662,6.662,0,0,0,13.24,0,.837.837,0,0,1,1.665.179Zm0,0" transform="translate(-549.885 -305.89)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

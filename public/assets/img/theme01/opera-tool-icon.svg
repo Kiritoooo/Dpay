@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_285" data-name="矩形 285" width="24" height="24" transform="translate(642 750)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="opera-tool-icon" transform="translate(-642 -750)" clip-path="url(#clip-path)">
+    <g id="组_372" data-name="组 372" transform="translate(42 569)">
+      <path id="路径_1152" data-name="路径 1152" d="M621.429,182A1.573,1.573,0,0,1,623,183.571v18.857A1.573,1.573,0,0,1,621.429,204H602.571A1.573,1.573,0,0,1,601,202.429V183.571A1.573,1.573,0,0,1,602.571,182Zm-11.339,8a.787.787,0,0,0-1,.091l-4.714,4.714-.091.108a.786.786,0,0,0,.091,1l.108.091a.786.786,0,0,0,1-.091l4.16-4.159,4.159,4.159.108.091a.786.786,0,0,0,1-.091l4.714-4.714.091-.108a.786.786,0,0,0-.091-1l-.108-.091a.787.787,0,0,0-1,.091l-4.159,4.159-4.159-4.159Zm0,0" transform="translate(0 0)" fill="#0a253a"/>
+    </g>
+  </g>
+</svg>

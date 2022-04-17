@@ -1,0 +1,309 @@
+<style>
+    .form-control2 {
+    display: block;
+    width: 100%;
+    height: 31px;
+    padding: 3px 12px;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #555555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+</style>
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {include file="common/sidenav" /}
+        </div>
+        <div class="col-md-9">
+                <div class="panel panel-default panel-user">
+                    <div class="panel-body">
+                        <div class="panel-post">
+                            <h2 class="page-header">
+                                
+                            <span>支付通道管理</span>
+                            
+                            <a href="javascript:" id="add" class="btn btn-info btn-recharge pull-right add_channel"> {:__('新增')}</a>
+                            <a href="javascript:" id="add" style="float:right;margin-right:20px;" class="btn btn-warning basic_channel"> {:__('配置')}</a>
+                            </h2>
+                            <div class="alert alert-success-light">
+                            二维码解码网址：https://cli.im/deqr  &nbsp;&nbsp;QQ钱包解码地址：https://www.sojson.com/qr/zxing.html
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            {volist name='qrlist' id='qr'}
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                     <div class="col-md-6">
+                                         <h4>
+                                    <a href="javascript:" target="_blank">
+                                        {if condition="$qr.type == 'alipay'"}
+                                            支付宝 &nbsp;
+                                        {/if}
+                                        
+                                        {if condition="$qr.type == 'wxpay'"}
+                                            微信&nbsp;&nbsp;&nbsp;&nbsp;
+                                        {/if}
+                                        
+                                        {if condition="$qr.type == 'qqpay'"}
+                                            QQ钱包 &nbsp;
+                                        {/if}
+                                        
+                                        
+                                        </a>
+                                        <span style="padding-left:20px;font-size:12px;">
+                                            {if condition="$qr.status == 1"}
+                                                <font style="color:green" >在线</font>
+                                            {/if}
+                                            
+                                            {if condition="$qr.status == 0"}
+                                                <font style="color:red" >离线</font>
+                                            {/if}
+                                            
+                                         </span>
+                                           
+                                </h4>  
+                                     </div>
+                                     
+                                </div>
+                                
+                                <div class="col-md-12">
+                                    
+                                  <br>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <p class="text-muted">当前模式：{$qr.name}</p>
+                                    
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="text-muted">已收款金额：￥{$qr.money}</p>  
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                    <p class="text-muted">添加时间：{$qr.createtime|date="Y-m-d H:i:s",###}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="text-muted">已收款笔数：{$qr.succ_ordercount} 笔</p>  
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <p class="text-muted">收款上限：{$qr.all_maxmoney}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="text-muted">笔数上限：{$qr.day_maxmoney}</p>  
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                    <p class="text-muted">备注信息：{$qr.memo}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        {if condition="$qr.code == 'wxpay_cloud'"}
+                                            <p class="text-muted">UID：{$qr.cookie}</p>
+                                        {/if}
+                                        {if condition="$qr.code == 'alipay_mg'"}
+                                            <p class="text-muted">PID：{$qr.zfb_pid}</p>
+                                        {/if}
+                                        {if condition="$qr.code == 'alipay_grmg'"}
+                                            <p class="text-muted">PID：{$qr.zfb_pid}</p>
+                                        {/if}
+                                        {if condition="$qr.code == 'qqpay_mg'"}
+                                            <p class="text-muted">QQ：{$qr.qq}</p>
+                                        {/if}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            
+                                            <a class="btn btn-success detail" data-id="{$qr.id}"  href="javascript:"> 详情</a>
+                                            <a class="btn btn-info update" data-id="{$qr.id}" data-type="{$qr.type}" data-code="{$qr.code}" href="javascript:"> 更新</a>
+                                        <a class="btn btn-danger btn-delete del" data-id="{$qr.id}" href="javascript:"> 删除</a>
+                                        
+                                        {if condition="$qr.is_status == '1'"}
+                                          <a class="btn btn-warning btn-xiaxian xiaxian" data-id="{$qr.id}" href="javascript:"> 已开启</a>
+                                         {/if}
+                                         {if condition="$qr.is_status == '0'"}
+                                          <a class="btn btn-danger btn-xiaxian xiaxian" data-id="{$qr.id}" href="javascript:"> 已关闭</a>
+                                         {/if}
+                                        </div>
+                                     </div>
+                               
+                            </div>
+                            <div class="col-md-12">
+                                <hr>
+                            </div>
+                            {/volist}
+                            
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<script type="text/html" id="addctpl">
+<form id="channel-form" class="form-horizontal form-layer" method="POST" action="{:url('index/channel/addchannel')}">
+        <div class="form-body">
+            
+            <div class="form-group">
+                <label for="c-mobile" class="control-label col-xs-12 col-sm-3">支付类型:</label>
+                <div class="col-xs-12 col-sm-8">
+                    {:Form::radios('type', ['alipay'=>'支付宝', 'wxpay'=>'微信','qqpay'=>'钱包'], 'alipay')}
+                    <span class="msg-box"></span>
+                </div>
+            </div>
+            
+            <div id="wxqr" class="form-group">
+                <label for="c-mobile" class="control-label col-xs-12 col-sm-3">通道类型:</label>
+                <div class="col-xs-12 col-sm-8">
+                <div class="radio">
+                    {foreach name="wxlist" item="vo"}
+                     <label for="channel_code-{$vo.code}"><input id="channel_code-{$vo.code}" name="channel_code" type="radio" value="{$vo.code}" /> {$vo.name}</label> 
+                     
+                     {/foreach}
+                     
+                    </div>
+                </div>
+            </div>
+            <div id="aliqr" class="form-group">
+                <label for="c-mobile" class="control-label col-xs-12 col-sm-3">通道类型:</label>
+                <div class="col-xs-12 col-sm-8">
+                <div class="radio">
+                    {foreach name="alilist" item="vo"}
+                     <label for="channel_code-{$vo.code}"><input id="channel_code-{$vo.code}" name="channel_code" type="radio" value="{$vo.code}"  /> {$vo.name}</label> 
+                     
+                     {/foreach}
+                     
+                    </div>
+                </div>
+            </div>
+            
+            <div id="qqqr" class="form-group">
+                <label for="c-mobile" class="control-label col-xs-12 col-sm-3">通道类型:</label>
+                <div class="col-xs-12 col-sm-8">
+                <div class="radio">
+                    {foreach name="qqlist" item="vo"}
+                     <label for="channel_code-{$vo.code}"><input id="channel_code-{$vo.code}" name="channel_code" type="radio" value="{$vo.code}"  /> {$vo.name}</label> 
+                     
+                     {/foreach}
+                     
+                    </div>
+                </div>
+            </div>
+
+            
+            <div id="ewm" class="form-group">
+                <label for="ewm_url" class="control-label col-xs-12 col-sm-3">二维码:</label>
+                <div class="col-xs-12 col-sm-8">
+                        <input type="text" name="ewm_url" id="ewm_url"  class="form-control" data-rule="" />
+                        <span class="msg-box"></span>
+                </div>
+            </div>
+            
+            <div id="zfb_pid" class="form-group">
+                <label for="zfb_pid" class="control-label col-xs-12 col-sm-3">支付宝PID:</label>
+                <div class="col-xs-12 col-sm-8">
+                        <input type="text" name="zfb_pid"   class="form-control" data-rule="" />
+                        <span class="msg-box"></span>
+                </div>
+            </div>
+            
+            
+            <div id="wxname" class="form-group">
+                <label for="wx_name" class="control-label col-xs-12 col-sm-3">微信昵称:</label>
+                <div class="col-xs-12 col-sm-8">
+                        <input type="text" name="wx_name" id="wx_name" class="form-control" data-rule="" />
+                        <span class="msg-box"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="memo" class="control-label col-xs-12 col-sm-3">备注:</label>
+                <div class="col-xs-12 col-sm-8">
+                        <input type="text" name="memo" id="wx_name" class="form-control" data-rule="" />
+                        <span class="msg-box"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-footer">
+            <div class="form-group" style="margin-bottom:0;">
+                <label class="control-label col-xs-12 col-sm-3"></label>
+                <div class="col-xs-12 col-sm-8">
+                    <button type="submit" class="btn btn-md btn-info">{:__('立即新增')}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>
+<script type="text/html" id="basicctpl">
+<form id="channel-form" class="form-horizontal form-layer" method="POST" action="{:url('index/channel/basic')}">
+        <div class="form-body">
+            
+            <div class="form-group">
+                <label for="feilv" class="control-label col-xs-12 col-sm-3">语音提醒:</label>
+                <div class="col-xs-12 col-sm-8">
+                        {:Form::radios('yuyin_notity', ['1'=>'启用','2'=>'禁用'], $user.yuyin_notity, ['data-rule'=>''])}
+                        
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="memo" class="control-label col-xs-12 col-sm-3">收银提示:</label>
+                <div class="col-xs-12 col-sm-8">
+                        <input type="text" name="console_notity" value="{$user.console_notity}"  class="form-control" data-rule="" />
+                        
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="feilv" class="control-label col-xs-12 col-sm-3">收银模板:</label>
+                <div class="col-xs-12 col-sm-8">
+                        {:Form::radios('pay_temp', ['console'=>'经典','new_pay'=>'新版','gf_pay'=>'官方'], $user.pay_temp, ['data-rule'=>''])}
+                        
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="is_login_email" class="control-label col-xs-12 col-sm-3">登录提醒:</label>
+                <div class="col-xs-12 col-sm-8">
+                        {:Form::radios('is_login_email', ['1'=>'启用','0'=>'禁用'], $user.is_login_email, ['data-rule'=>''])}
+                        
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="is_login_email" class="control-label col-xs-12 col-sm-3">混合支付:</label>
+                <div class="col-xs-12 col-sm-8">
+                        {:Form::radios('is_other', ['1'=>'启用','0'=>'禁用'], $user.is_other, ['data-rule'=>''])}
+                        
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="memo" class="control-label col-xs-12 col-sm-3">余额提醒:</label>
+                <div class="col-xs-12 col-sm-8">
+                        <input type="text" name="min_money_tx" value="{$user.min_money_tx}" placeholder="余额不足扣除费率邮箱提醒,0为不提醒"  class="form-control" data-rule="" />
+                        
+                </div>
+            </div>
+           
+        </div>
+        <div class="form-footer">
+            <div class="form-group" style="margin-bottom:0;">
+                <label class="control-label col-xs-12 col-sm-3"></label>
+                <div class="col-xs-12 col-sm-8">
+                    <button type="submit" class="btn btn-md btn-success">{:__('立即修改')}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</script>
+

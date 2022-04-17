@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>{$ann.pubtitle}</title>
+    <link href="/assets/file/front/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="logo">
+        <h1>
+            <a href="/">
+                <img src="{$site.logo|htmlentities}" style="float:left;" width="240" height="80" />
+            </a>
+            <span class="logo_span"> 商户管理中心</span>
+        </h1>
+        <ul id="logo_right"></ul>
+    </div>
+    <!--logo end-->
+    <div id="nav_bg"></div>
+    <!--nav end-->
+    <div id="nav_bj">
+        <ul class="nav">
+            <li><a href="/" class="current">系统公告</a></li>
+        </ul>
+    </div>
+    <!--nav_bj end-->
+
+    <div id="body">
+        <div class="body_lb">
+            <h3 style="color:red">{$ann.pubtitle}</h3>
+            <p class="xq_p">{$ann.createtime|date="Y-m-d H:i:s",###}</p>
+            <div class="neirong">
+                {$ann.publicontent}
+            </div>
+            <div class="notice_bottom">
+                <div class="anniu">
+                    <a href="{:url('index/news/index')}"><img src="/assets/file/front/images/back.png" /></a>
+                    <a href="javascript:window.opener=null;window.open('','_self');window.close();"><img src="/assets/file/front/images/close.png" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p>
+            Copyright @ 2017~{:date('Y',time())} 版权所有
+        </p>
+    </div>
+</body>
+</html>

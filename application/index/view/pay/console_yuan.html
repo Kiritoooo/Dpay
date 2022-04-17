@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>{$site.name|htmlentities} - 收银台</title>
+    <link href="//cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+    <div class="col-xs-12 col-sm-10 col-lg-8 center-block" style="float: none;">
+    <div class="page-header">
+      <h4>{$site.name|htmlentities} - 收银台<a href="/" class="pull-right"><small>返回首页</small></a></h4>
+    </div>
+    <div class="panel panel-primary">
+    <div class="panel-body">
+    <div class="alert alert-danger" role="alert">当前通道不可用，您可以选择其他通道支付</div>
+    <form name="alipayment">
+        <input type="hidden" name="pid" value="{$od.pid}">
+        <input type="hidden" name="type" value="{$od.type}">
+        <input type="hidden" name="notify_url" value="{$od.notify_url}">
+        <input type="hidden" name="return_url" value="{$od.return_url}">
+        <input type="hidden" name="sitename" value="{$od.sitename}">
+    <div class="input-group">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
+    <input class="form-control" placeholder="商户订单号" value="{$od.out_trade_no}" name="out_trade_no" type="text" disabled="">
+    </div>
+    <br>
+    <div class="input-group">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-shopping-cart"></span></span>
+    <input class="form-control" placeholder="商品名称" value="{$od.name}" name="name" type="text" disabled="" >
+    </div>
+    <br>
+    <div class="input-group">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-yen"></span></span>
+    <input class="form-control" placeholder="付款金额" value="{$od.money}" name="money" type="text" disabled="">	        
+    </div>        			
+    <br>
+    <center>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+    {if condition="$od.type == 'qqpay'"}
+        <div class="btn-group" role="group">
+      <button type="button" name="type" value="1" class="btn btn-default" onclick="submitPay(this)"><img src="/assets/icon/alipay.ico" height="18">&nbsp;支付宝</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" name="type" value="2" class="btn btn-default" onclick="submitPay(this)"><img src="/assets/icon/wxpay.ico" height="18">&nbsp;微信支付</button>
+    </div>
+
+    {/if}
+    {if condition="$od.type == 'wxpay'"}
+        <div class="btn-group" role="group">
+      <button type="button" name="type" value="1" class="btn btn-default" onclick="submitPay(this)"><img src="/assets/icon/alipay.ico" height="18">&nbsp;支付宝</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" name="type" value="3" class="btn btn-default" onclick="submitPay(this)"><img src="/assets/icon/qqpay.ico" height="18">&nbsp;QQ支付</button>
+    </div>
+    {/if}
+    {if condition="$od.type == 'alipay'"}
+      
+    <div class="btn-group" role="group">
+      <button type="button" name="type" value="2" class="btn btn-default" onclick="submitPay(this)"><img src="/assets/icon/wxpay.ico" height="18">&nbsp;微信支付</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" name="type" value="3" class="btn btn-default" onclick="submitPay(this)"><img src="/assets/icon/qqpay.ico" height="18">&nbsp;QQ支付</button>
+    </div>
+    {/if}
+    
+    </div>
+    </center>
+    </form>
+    </div>
+    <div class="panel-footer text-center">
+    {$site.name|htmlentities} © 2021 All Rights Reserved.
+    </div>
+    </div>
+    </div>
+    </div>
+    <script src="//cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="//cdn.staticfile.org/layer/3.1.1/layer.min.js"></script>
+    <script>
+    function submitPay(obj){
+    	
+    	var money=$("input[name='money']").val();
+    	var out_trade_no=$("input[name='out_trade_no']").val();
+    	var pid=$("input[name='pid']").val();
+    	var type=$("input[name='type']").val();
+    	var notify_url=$("input[name='notify_url']").val();
+    	var return_url=$("input[name='return_url']").val();
+    	var sitename=$("input[name='sitename']").val();
+    	var name=$("input[name='name']").val();
+    	var typeid=$(obj).val();
+    	if(money==''){
+    		layer.alert("金额不能为空");
+    		return false;
+    	}
+    	var ii = layer.load();
+    	$.ajax({
+    		type: "POST",
+    		dataType: "json",
+    		data: {money:money, out_trade_no:out_trade_no, pid:pid, ytype:type, notify_url:notify_url, return_url:return_url, sitename:sitename, name:name, typeid:typeid},
+    		url: "/index/index/consolepay",
+    		success: function (data, textStatus) {
+    			layer.close(ii);
+    			document.write(data);
+    		},
+    		error: function (data) {
+    			layer.msg('服务器错误', {icon: 2});
+    		}
+    	});
+    	return false;
+    }
+    </script>
+</body>
+</html>

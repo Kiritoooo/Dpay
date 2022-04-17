@@ -1,0 +1,9 @@
+{__NOLAYOUT__}
+
+<div>
+    <p style="margin:20px;text-align:center;color:red;">请添加一个微信号进行绑定，长时间未绑定联系客服</p>
+    {volist name='wxlist' id='vo'}
+    <p style="margin-top:20px;text-align:center;color:blue;" >微信昵称：{$vo.wx_name}   微信账号：{$vo.wx_user}</p>
+    {/volist}
+    
+</div>

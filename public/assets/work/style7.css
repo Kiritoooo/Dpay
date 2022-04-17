@@ -1,0 +1,69 @@
+body,button,input,select,textarea{font-size:16px;line-height:1.75;color:#4a5875}
+a:hover{text-decoration:none}
+ul{overflow:hidden}
+.clear:after{content:'.';display:block;height:0;clear:both;visibility:hidden}
+.wrapper{width:1200px;margin:0 auto}
+.header{height:80px;color: #fff;font-size:16px;background: #4782f8;position:relative;z-index:11;position: fixed;top: 0;right: 0;left: 0;z-index: 1030;}
+.header a{color: #fff;}
+.header .wrapper{height:auto}
+.header .logo{/* padding-top:15px; *//* float:left; */}
+.header .logo img{width: 160px;}
+.fkwProduct{display:block;position:absolute;width:102px;height:24px;line-height:24px;top:30px;border: 1px solid #0097fd;border-radius:3px;background-color: #0097fd;color:#333;font-size:12px;text-align:center;left:530px;}
+.header .nav-wrap{float:right;position:relative}
+.header .nav{float:right;line-height:80px;margin-right: 80px;}
+.header .nav ul{overflow:visible}
+.header .nav li{float:left;margin-left:10px;position:relative;padding:0 20px;cursor:pointer}
+.header .nav dl{display:none;position:absolute;left:0;top:80px;background:#fff;border-radius:5px;width:145px;text-align:center;padding:15px 0;box-shadow:rgba(0,0,0,.1) 0 5px 5px;z-index:11}
+.header dl a{color:#485774}
+.header dd{height:50px;line-height:50px}
+.header dd a{display:block}
+.header dd a{font-size:14px}
+.header dd:hover{background:#eee}
+.header .nav li strong{position:relative;font-weight:400}
+.header .nav .on strong a{color:#00ffde}
+.header .btns .on a{color:#00ffde;border-color:#00ffde}
+.header .nav .on i{color:#00ffde}
+.header .nav .on strong:before{content:'';position:absolute;left:0;right:0;bottom:-10px;height:2px;background:#00ffde}
+.header .nav li:hover dl{display:block}
+.header .nav i{padding-left:10px;font-size:14px}
+.header .btns{margin-top:20px;line-height:38px;position:absolute;right:0;top:0}
+.header .btns li{float:left;margin-left:10px;cursor:pointer}
+.header .btns a{display:inline-block;width:88px;text-align:center;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:50px}
+.header .reg a{border:#008aff solid 1px;color:#fff;background:#1b92fa}
+.header .reg:hover a{background:#fff;color:#3e7bf8}
+.header .login a{border: #b7c7d6 solid 1px;color: #ffffff;background: #594aff;}
+.header .login:hover a{background:#008aff;color:#fff}
+.banner{margin-top: -20px;text-align:center;color:#fff;font-size:18px;height: 120px;}
+.banner h2{padding-top:120px;font-size:30px;}
+.banner p{letter-spacing:10px;font-size:16px}
+.guide-nv{border-bottom:#dcdcdc solid 2px;height:80px;line-height:80px;margin-top:20px;font-size:24px;color:#4a5875}
+.guide-nv li{float:left}
+.guide-nv a{width:235px;display:inline-block;border-bottom:transparent solid 2px;text-align:center;height:78px;line-height:80px;font-size:18px}
+.guide-nv li.on a{border-bottom-color:#6e94ff}
+.guide-mn{height:auto;overflow:hidden}
+.guide-l{width:235px;float:left;padding-top:30px}
+.guide-l li{margin-bottom:15px}
+.guide-l a{display:block;height:65px;color:#4a5875;font-size:18px;text-align:center;border-radius:5px;line-height:65px}
+.guide-l li a:hover{background-color:#eee}
+.guide-l li.on a{background:#6e94ff;color:#fff}
+.guide-r{width:900px;float:right}
+.guide-rhd{border-bottom:#dcdcdc solid 1px;padding:30px 0 20px 0;font-size:20px;color:#4a5875}
+.guide-rbd{font-size:18px;line-height:52px;padding:30px 0}
+.guide-rbd p{margin-bottom:60px;font-size:14px}
+.guide-rbd a{color:#6e94ff;margin-right:20px}
+.cloud-banner{position:relative;min-width:1200px;background:#0af url(../images/cloud-back.jpg) no-repeat center;height:180px;overflow:hidden;color:#fff;text-align:center}
+.cloud-bubble-one{position:absolute;top:-120px;left:50%;z-index:10;margin-left:-120px;width:240px;height:240px;background:url(../images/cloud-back-bule1.png);animation:bubble-animate-1 linear 10s infinite}
+.cloud-bubble-two{position:absolute;top:50px;left:34%;z-index:11;width:360px;height:360px;background:url(../images/cloud-back-bule2.png);animation:bubble-animate-2 linear 12s infinite}
+.cloud-bubble-three{position:absolute;top:50px;left:48%;z-index:12;width:300px;height:300px;background:url(../images/cloud-back-bule3.png);animation:bubble-animate-3 linear 11s infinite}
+@keyframes bubble-animate-1{from{top:-120px}
+50%{top:-180px}
+to{top:-120px}
+}
+@keyframes bubble-animate-2{from{top:50px;left:34%}
+50%{top:80px;left:24%}
+to{top:50px;left:34%}
+}
+@keyframes bubble-animate-3{from{top:50px;left:48%}
+50%{top:80px;left:58%}
+to{top:50px;left:48%}
+}

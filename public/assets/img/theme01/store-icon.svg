@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_269" data-name="矩形 269" width="32" height="32" transform="translate(1299 1412)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="SVGID" width="32" height="28" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="store-icon" transform="translate(-1299 -1412)" clip-path="url(#clip-path)">
+    <g id="组_358" data-name="组 358" transform="translate(696 1177)">
+      <g id="组_357" data-name="组 357" transform="translate(603 237)">
+        <g id="组_356" data-name="组 356" clip-path="url(#clip-path-2)">
+          <path id="路径_1136" data-name="路径 1136" d="M618.869,239.334a9.043,9.043,0,0,1,8.4,5.907h1.781a10.608,10.608,0,0,0-20.364,0h1.781a9.038,9.038,0,0,1,8.4-5.907Zm14.938,6.441H603.931a1.065,1.065,0,0,0-1.051,1.08v3.714a1.065,1.065,0,0,0,1.051,1.08h.877l2.308,12.178s.13,1.71,1.4,1.71h20.785c1.271,0,1.405-1.71,1.405-1.71l2.308-12.178h.792a1.065,1.065,0,0,0,1.052-1.08v-3.714a1.077,1.077,0,0,0-1.056-1.08m-19.38,15.713a1.119,1.119,0,1,1-2.237,0v-9.346a1.119,1.119,0,1,1,2.237,0v9.346m5.561,0a1.119,1.119,0,1,1-2.237,0v-9.346a1.119,1.119,0,1,1,2.237,0v9.346m5.561,0a1.119,1.119,0,1,1-2.237,0v-9.346a1.119,1.119,0,1,1,2.237,0Zm0,0" transform="translate(-602.885 -237.582)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

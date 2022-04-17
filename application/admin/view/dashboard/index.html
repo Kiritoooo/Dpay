@@ -1,0 +1,311 @@
+<div id="main" role="main">
+            <div class="tab-content tab-addtabs">
+                <div id="content">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="content-header hide">
+                                <h1>
+                                    控制台                                    <small>Control panel</small>
+                                </h1>
+                            </section>
+                                                        <div class="content">
+                                <style type="text/css">
+	[v-cloak] { display: none }
+	.bg-card-blue{
+		background: linear-gradient(-125deg, #57bdbf, #2f9de2);
+		color: #ffffff;
+	}
+	.bg-card-red{
+		background: linear-gradient(-125deg, #ff7d7d, #fb2c95);
+		color: #ffffff;
+	}
+	.bg-card-violet {
+	    background: linear-gradient(-113deg, #c543d8, #925cc3);
+		color: #ffffff;
+	}
+	.bg-card-primary {
+	    background: linear-gradient(-141deg, #ecca1b, #f39526);
+		color: #ffffff;
+	}
+	.wanlcard .small-box,.panel{
+		border-radius: 10px;
+	}
+	.wanlcard .small-box > .inner{
+		padding: 15px 22px;
+	}
+	.wanlcard .small-box > .inner p:last-child{
+		font-size: 12px;
+	}
+	.wanlcard .small-box p{
+		font-size: 14px;
+		margin: 10px 0;
+	}
+	.wanlcard .small-box h3{
+		font-weight: 100;
+	}
+	.wanlcard .small-box .icon{
+		color: rgba(255, 255, 255, 0.16);
+		right: 22px;
+	}
+	
+	.small-box .icon{
+		font-size: 80px;
+	}
+	
+	.panel-statistics h3 {
+	    font-weight: 500;
+	    font-size: 14px;
+	    color: #333;
+		margin-top: 9.2px;
+	}
+	
+	.panel-statistics h4{
+		color: #666;
+		font-weight: 400;
+		font-size: 14px;
+	}
+	.panel-btn{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: -9px;
+	}
+	.wanl-order .panel{
+		background: linear-gradient(-125deg, #57bdbf, #2f9de2);
+	}
+	.wanl-order .panel h3{
+		font-weight: 500;
+	}
+	.wanl-order .panel h3, .wanl-order .panel h4{
+		color: #ffffff;
+	}
+	.wanl-order .pull-left .fa{
+		color: #ffffff;
+		font-size: 30px;
+	}
+	.wanllist .panel-statistics h4 {
+	    color: #555;
+	    font-weight: bold;
+	    font-size: 18px;
+	}
+	.wanllist .panel-statistics thead{
+		color: #777777;
+	}
+	.vertical{
+		vertical-align: middle;
+	}
+	
+	.table > thead > tr > th, 
+	.table > thead > tr > td, 
+	.table > tbody > tr > th, 
+	.table > tbody > tr > td
+	{
+		padding: 12px 0;
+		font-weight: initial;
+	}
+	
+	.table > tbody > tr > td:first-child {
+		color: #666666;
+	}
+</style>
+<div class="alert alert-danger-light">
+	<i class="fa fa-warning"></i> 官方声明：禁止使用本软件（系统）用于任何违法违规业务或项目,造成的任何法律后果由使用者（或运营者）承担全部责任
+</div>
+<div class="alert alert-success-light">
+	<i class="fa fa-warning"></i> 温馨提示：当前版本号：V3.0.0 本系统（源支付）为收费开源项目，商业使用请联系官方购买授权
+</div>
+<div class="row wanlcard">
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-card-blue">
+            <div class="inner">
+				<p>支付宝</p>
+                <h3>{$alicount}</h3>
+                <p>平台支付宝通道统计</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-sitemap"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-card-red">
+            <div class="inner">
+    			<p>微信</p>
+    			<h3>{$wxcount}</h3>
+    			<p>平台微信通道统计</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+        </div>
+    </div>
+	<div class="col-lg-3 col-xs-6">
+	    <div class="small-box bg-card-violet">
+	        <div class="inner">
+				<p>会员</p>
+	            <h3>{$totaluser}</h3>
+	            <p>平台注册会员总数</p>
+	        </div>
+	        <div class="icon">
+	            <i class="fa fa-user-circle"></i>
+	        </div>
+	    </div>
+	</div>
+	<div class="col-lg-3 col-xs-6">
+	    <div class="small-box bg-card-primary">
+	        <div class="inner">
+				<p>今日会员</p>
+	            <h3>{$todayusersignup}</h3>
+	            <p>今日新增用户数量</p>
+	        </div>
+	        <div class="icon">
+	            <i class="fa fa-user"></i>
+	        </div>
+	    </div>
+	</div>
+</div>
+<!-- 资金 -->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-6 col-lg-3" style="margin-bottom:15px;">
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <h3>平台总流水</h3>
+                        <h4>￥{$allmoney}</h4>
+                    </div>
+                </div>
+            </div>
+			<div class="col-xs-6 col-lg-3" style="margin-bottom:15px;">
+			    <div class="panel panel-default panel-intro panel-statistics">
+			        <div class="panel-body">
+			            <h3>今日订单金额</h3>
+			            <h4>￥{$daymoney}</h4>
+			        </div>
+			    </div>
+			</div>
+            <div class="col-xs-6 col-lg-3" style="margin-bottom:15px;">
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <h3>平台总订单</h3>
+                        <h4>{$allmoneycount} 个</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-lg-3" style="margin-bottom:15px;">
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <h3>今日总订单</h3>
+						<h4>{$daymoneycount} 个</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 百度图标 -->
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <div class="panel">
+            <div class="panel-body">
+                <div id="echart" class="btn-refresh" style="height:360px;width:100%;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="row">
+			<div class="wanl-order">
+				<div class="col-xs-6" style="margin-bottom:15px;">
+				    <div class="panel panel-default panel-intro panel-statistics">
+				        <div class="panel-body">
+							<div class="pull-left">
+								<i class="fa fa-coffee"></i>
+							</div>
+							<div class="pull-right text-right">
+								<h3>今日注册</h3>
+								<h4>{$todayusersignup}</h4>
+							</div>
+				        </div>
+				    </div>
+				</div>
+				<div class="col-xs-6" style="margin-bottom:15px;">
+				    <div class="panel panel-default panel-intro panel-statistics">
+				        <div class="panel-body">
+							<div class="pull-left">
+								<i class="fa fa-truck"></i>
+							</div>
+							<div class="pull-right text-right">
+								<h3>今日登录</h3>
+								<h4>{$todayuserlogin}</h4>
+							</div>
+				        </div>
+				    </div>
+				</div>
+				<div class="col-xs-6" style="margin-bottom:15px;">
+				    <div class="panel panel-default panel-intro panel-statistics">
+				        <div class="panel-body">
+							<div class="pull-left">
+								<i class="fa fa-cube"></i>
+							</div>
+				            <div class="pull-right text-right">
+				            	<h3>三日新增</h3>
+				            	<h4>{$threednu}</h4>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+				<div class="col-xs-6" style="margin-bottom:15px;">
+				    <div class="panel panel-default panel-intro panel-statistics">
+				        <div class="panel-body">
+							<div class="pull-left">
+								<i class="fa fa-cart-arrow-down"></i>
+							</div>
+							<div class="pull-right text-right">
+								<h3>七日新增</h3>
+								<h4>{$sevendnu}</h4>
+							</div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			<div class="col-xs-6" style="margin-bottom:15px;">
+			    <div class="panel panel-default panel-intro panel-statistics">
+			        <div class="panel-body">
+			            <h3>七日活跃</h3>
+			            <h4>{$sevendau}</h4>
+			        </div>
+			    </div>
+			</div>
+			<div class="col-xs-6" style="margin-bottom:15px;">
+			    <div class="panel panel-default panel-intro panel-statistics">
+			        <div class="panel-body">
+			            <h3>月活跃</h3>
+			            <h4>{$thirtydau}</h4>
+			        </div>
+			    </div>
+			</div>
+			<div class="col-xs-6" style="margin-bottom:15px;">
+			    <div class="panel panel-default panel-intro panel-statistics">
+			        <div class="panel-body">
+			            <h3>总管理员数</h3>
+			            <h4>{$totaladmin}</h4>
+			        </div>
+			    </div>
+			</div>
+			<div class="col-xs-6" style="margin-bottom:15px;">
+			    <div class="panel panel-default panel-intro panel-statistics">
+			        <div class="panel-body">
+			            <h3>总插件数</h3>
+			            <h4>{$totaladdon}</h4>
+			        </div>
+			    </div>
+			</div>
+        </div>
+    </div>
+</div>
+               </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

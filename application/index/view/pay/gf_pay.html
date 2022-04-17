@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" content="zh-cn">
+<meta name="renderer" content="webkit">
+<title>在线支付 - 网上支付 安全快速！</title>
+<link href="/assets/css/alipay_pay.css?v=2" rel="stylesheet" media="screen">
+</head>
+<body>
+<div class="body">
+<h1 class="mod-title">
+{if condition="$order.typedata == 'qqpay'"}
+<span class="ico-qqpay"></span><span class="text">QQ扫码支付</span>
+{/if}
+{if condition="$order.typedata == 'alipay'"}
+<span class="ico-alipay"></span><span class="text">支付宝扫码支付</span>
+{/if}
+{if condition="$order.typedata == 'wxpay'"}
+<span class="ico-wechat"></span><span class="text">微信扫码支付</span>
+{/if}
+</h1>
+<div class="mod-ct">
+<div class="order">
+</div>
+<div class="amount">￥{$order.money}</div>
+<div class="qr-image" id="qrcode">
+</div>
+<div class="open_app" style="display: none;">
+{if condition="$order.typedata eq 'alipay'"}
+<a id="startApp" class="btn-open-app">打开支付宝APP继续付款</a><br/><br/><br/>
+{else /}
+<a id="startApp" class="btn-open-app">打开微信APP继续付款</a><br/><br/><br/>
+{/if}
+</div>
+<div class="detail" id="orderDetail">
+<dl class="detail-ct" style="display: none;">
+<dt>购买物品</dt>
+<dd id="productName">{$order.name}</dd>
+<dt>商户订单号</dt>
+<dd id="billId">{$order.trade_no}</dd>
+<dt>温馨提示</dt>
+<dd id="createTime">{$console_notity}</dd>
+</dl>
+<a href="javascript:void(0)" class="arrow"><i class="ico-arrow"></i></a>
+</div>
+<div class="tip">
+<span class="dec dec-left"></span>
+<span class="dec dec-right"></span>
+<div class="ico-scan"></div>
+<div class="tip-text">
+{if condition="$order.typedata == 'qqpay'"}
+<p>请使用QQ扫一扫</p>
+{/if}
+{if condition="$order.typedata == 'alipay'"}
+<p>请使用支付宝扫一扫</p>
+{/if}
+{if condition="$order.typedata == 'wxpay'"}
+<p>请使用微信扫一扫</p>
+{/if}
+<p>扫描二维码完成支付</p>
+</div>
+</div>
+<div class="tip-text">
+</div>
+</div>
+<script src="//cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
+<script src="//cdn.staticfile.org/layer/3.1.1/layer.min.js"></script>
+<script src="//cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+<script type="text/javascript">
+     var intDiff = parseInt('{$ms}');//倒计时总秒数量
+     function timer(intDiff){
+         window.setInterval(function(){
+         var day=0,
+             hour=0,
+             minute=0,
+             second=0;//时间默认值       
+         if(intDiff > 0){
+         	day = Math.floor(intDiff / (60 * 60 * 24));
+             hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+             minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+            second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+         }
+		if (minute <= 9) minute = '0' + minute;
+		if (second <= 9) second = '0' + second;
+		if (hour <= 0 && minute <= 0 && second <= 0) {
+			$("#divTime").html("<small style='color:red; font-size:26px'>订单二维码已过期</small>");
+			$("#qrcode").html('<img id="qrcode_load" src="/assets/img/pay_console/qrcode_timeout.png">');//输出过期二维码提示图片
+		}else{
+			$("#divTime").html("二维码有效时间:<small style='color:red; font-size:26px'>" + minute + "</small>分<small style='color:red; font-size:26px'>" + second + "</small>秒,失效勿付");
+		}
+		intDiff--
+		}, 1000);
+     } 
+	 
+     $(function(){
+         timer(intDiff);
+     });
+
+    // 订单详情
+    $('#orderDetail .arrow').click(function (event) {
+        if ($('#orderDetail').hasClass('detail-open')) {
+            $('#orderDetail .detail-ct').slideUp(500, function () {
+                $('#orderDetail').removeClass('detail-open');
+            });
+        } else {
+            $('#orderDetail .detail-ct').slideDown(500, function () {
+                $('#orderDetail').addClass('detail-open');
+            });
+        }
+    });
+    //启动APP支付
+	var isMobile = function (){
+		var ua = navigator.userAgent;
+		var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+		isIphone =!ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+		isAndroid = ua.match(/(Android)\s+([\d.]+)/);
+		return isIphone || isAndroid;
+	}
+	function openAlipay(){
+		window.location.href = url_scheme;
+		layer.msg('正在打开支付宝...', {shade: 0,time: 1000});
+	}
+	window.onload = function(){
+		if(isMobile()){
+			$('.open_app').show();
+		}
+		window.location.href = url_scheme;
+		setTimeout("loadmsg()", 2000);
+	}
+ 
+    /**
+     * 检验是否手机版，手机版直接跳转到APP支付
+     * @returns
+     */
+	order();
+	updateQrOk = 0;
+	updateQrImg= 0;
+	updateQrNo = 0;
+     //订单监控  {订单监控}
+	function order(){
+	    var _v=new Date().getTime();
+        $.get("Ycode_Get.html",{trade_no: "{$order.trade_no}",v:_v},function(result){
+			//成功
+     		if(result.code == '200' && updateQrOk==0){
+				updateQrOk==1;
+				$("#divTime").html("<small style='color:red; font-size:22px'>"+ result.msg +"</small>");
+				$("#qrcode").html('<img id="qrcode_load" src="/assets/img/pay_console/pay_ok.png">');//支付成功
+ 				//回调页面
+         		window.clearInterval(orderlst);
+				layer.msg('支付成功，正在跳转中...');
+				window.location.href=result.url;
+     		}
+     		//支付二维码
+     		if(result.code == '100' && updateQrImg==0){
+ 				updateQrImg = 1;
+				$("#qrcode").html('<img id="qrcode_load" src="'+ result.qr_url +'">');
+				//二维码获取成功
+				if("{$order.typedata}"=='alipay')
+				{
+				    if(!isMobilCheck())
+    				{
+    				    $("#startApp").attr("href", "{$order.h5_qrurl}");
+    				    $("#startApp").show();
+    				    $("#startApp_text").show();
+    				    
+    				}
+				}
+				if("{$order.typedata}"=='wxpay')
+				{
+				    if(!isMobilCheck())
+    				{
+    				    $("#startApp").attr("href", "{$order.h5_qrurl}");
+		    			$("#startApp").show();
+		    			$("#startApp_text").show();
+    				}
+				}
+				
+			}
+         	//订单已经超时
+     		if(result.code == '0' && updateQrNo==0){
+				updateQrNo==1;
+				$("#divTime").html("<small style='color:red; font-size:22px'>"+ result.msg +"</small>");
+     			window.clearInterval(orderlst);
+     			layer.confirm(result.msg, {
+     			  icon: 2,
+     			  title: '支付失败',
+   				  btn: ['确认'] //按钮
+   				}, function(){
+					location.href="#";
+   				});
+         	}
+			
+     	},"JSON");
+	}
+	
+	/**
+     * 检验是否手机版，手机版直接跳转到APP支付
+     * @returns
+     */
+    function isMobilCheck() {
+    	var userAgentInfo = navigator.userAgent;
+    	var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+    	var flag = true;
+    	for (var v = 0; v < Agents.length; v++) {
+    		if (userAgentInfo.indexOf(Agents[v]) > 0) {
+    			flag = false;
+    			break;
+    		}
+    	}
+    	return flag;
+    }
+    
+    
+	//周期监听 
+	orderlst = window.setInterval(function () {
+		order();
+	}, 2000); 
+	
+</script>
+{if condition="$tixing == '1'"}
+<script>
+    
+    speckText(0)
+    function speckText(str){
+        var url = "/assets/yuyin.mp3";
+        var voiceContent = new Audio(url);
+        voiceContent.src = url;
+        voiceContent.play();
+    }
+</script>
+{/if}
+</body>
+</html>

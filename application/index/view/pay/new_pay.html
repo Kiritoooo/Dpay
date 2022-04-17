@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/static/pay/pay_3/css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="/static/pay/pay_3/css/bootstrap-grid.css">
+        <link rel="stylesheet" href="/static/pay/pay_3/css/pc_qrcode.css">
+        <link href="/static/pay/pay_3/css/toastr.min.css" rel="stylesheet" media="screen">
+        <script src="//lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+        <title>安全支付</title>
+        <style>
+            body {
+                width: 100%;
+                height: 100vh;
+                background: #f7f7f7;
+             
+            }
+        </style>
+    </head>
+    <body>
+        
+        <section class='section details__section section--first  section--last'>
+           
+        <div style="padding-bottom: 18px;padding-top: 15px;" class="container">
+                    <div class="row ">
+                        <div class="col-12">
+                        <div style="text-align:center" class="mt-3">
+                            <svg t="1610806307396" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6171" width="26" height="26"><path d="M1024 199.18v410.38c0 110-89.54 199.18-200 199.18H200c-110.46 0-200-89.18-200-199.18V199.18C0 89.17 89.54 0 200 0h624c110.46 0 200 89.17 200 199.18z m-553.95 317v46.72q0.9 19.32 12 28.75t30.9 9.43q40.14 0 41.95-38.18v-47.58l86.6 0.45q11.73-0.9 18.49-8.76t7.67-19.54a33.48 33.48 0 0 0-7.67-19.32q-6.77-8.09-18.49-9h-86.6v-27.4l86.15-0.45q11.73-0.9 18.72-9a33.26 33.26 0 0 0 7.89-19.76q-0.9-11.23-7.67-18.42t-18.49-8.09h-66.3l69.91-113.2q9-11.68 9-24.71a50.37 50.37 0 0 0-4.28-15.27 24.48 24.48 0 0 0-7.22-9 27.29 27.29 0 0 0-9.92-4.49 74.75 74.75 0 0 0-12.4-1.8 43.43 43.43 0 0 0-19.4 7.19 54.51 54.51 0 0 0-14 13.48l-75.34 125.83L443 229.18A65.48 65.48 0 0 0 429 215a36.39 36.39 0 0 0-19.4-7.41q-18.49 2.25-25.26 10.11t-9 20.44a36.94 36.94 0 0 0 3.61 18.19 67.53 67.53 0 0 0 8.57 13.7l60.44 106H383q-12.18 0.9-18.72 8.09t-7.89 18.42q1.35 11.68 7.89 19.32t18.72 8.56l87.05 0.45v28.3H383q-12.18 0.9-18.72 8.09t-7.89 18.42a43.81 43.81 0 0 0 7.89 20.44q6.54 9.21 18.72 10.11h87.05z" fill="#4375ff" p-id="6172"></path><path d="M264.96 903.6m60.2 0l373.67 0q60.2 0 60.2 60.2l0 0q0 60.2-60.2 60.2l-373.67 0q-60.2 0-60.2-60.2l0 0q0-60.2 60.2-60.2Z" fill="#4375ff" p-id="6173"></path></svg>
+                            {if condition="$order.typedata == 'alipay'"}
+                               <img src="/assets/img/img/alipay.jpg" alt="" style="height:30px;">
+                            {/if}
+                            {if condition="$order.typedata == 'wxpay'"}
+                               <img src="/assets/img/img/weixin.jpg" alt="" style="height:30px;">
+                            {/if}
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            <div class='container'>
+                <div class="row">
+                    <div class="col-12">
+                        
+                        <div class="order">
+                            <span>商户订单号：<span id="copy_money">{$order.trade_no}</span></span> 
+                           
+                        </div>
+                        <div class="goods_name">
+                            <span>商品名称：{$order.name}</span>              
+                        </div>
+                        <div class="price mt-2">
+                            <span>{$order.money}</span>
+                            <span>元</span> 
+                        </div>
+                        <div id="qrcode">
+                            <img style="padding:8px;" id="qrcode_load" src="/assets/img/loading.gif" class="code" /> 
+                        </div>
+                        
+                        {if condition="$order.typedata eq 'alipay'"}
+                        <a id="startApp" target="_blank" class="header__order mt-2 zfbbtn" style="display: none;"><span>点击启动支付宝</span></a>
+                        {else /}
+                        <a id="startApp" class="header__order mt-2 weixinbtn" style="display: none;"><span>启动微信</span></a>
+                        
+                        {/if}
+                        <div class="price mt-1">
+                            <span style="color:red"></span>  
+                            <span style="color:red">请付款 {$order.truemoney} 元,注意不能多付或少付<br></span>
+                            <span id="divTime" style="color:red"></span>  
+                        </div>
+                        <div class="shanxinzha">
+                           {if condition="$order.typedata == 'qqpay'"}
+                               <span>请使用QQ扫一扫</span>
+                            {/if}
+                            {if condition="$order.typedata == 'alipay'"}
+                               <span>请使用支付宝扫一扫</span>
+                            {/if}
+                            {if condition="$order.typedata == 'wxpay'"}
+                               <span>请使用微信扫一扫</span>
+                            {/if}
+                            <br>
+                            <br>
+                            <span style="padding-top:10px;">{$console_notity}</span>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+<script src="/assets/layer/layer.js"></script>
+<script type="text/javascript">
+     var intDiff = parseInt('{$ms}');//倒计时总秒数量
+     function timer(intDiff){
+         window.setInterval(function(){
+         var day=0,
+             hour=0,
+             minute=0,
+             second=0;//时间默认值       
+         if(intDiff > 0){
+         	day = Math.floor(intDiff / (60 * 60 * 24));
+             hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+             minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+            second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+         }
+		if (minute <= 9) minute = '0' + minute;
+		if (second <= 9) second = '0' + second;
+		if (hour <= 0 && minute <= 0 && second <= 0) {
+			$("#divTime").html("<small style='color:red; font-size:26px'>订单二维码已过期</small>");
+			$("#qrcode").html('<img id="qrcode_load" src="/assets/img/pay_console/qrcode_timeout.png">');//输出过期二维码提示图片
+		}else{
+			$("#divTime").html("二维码有效时间:<small style='color:red; font-size:26px'>" + minute + "</small>分<small style='color:red; font-size:26px'>" + second + "</small>秒,失效勿付");
+		}
+		intDiff--
+		}, 1000);
+     } 
+	 
+     $(function(){
+         timer(intDiff);
+     });
+
+
+ 
+    /**
+     * 检验是否手机版，手机版直接跳转到APP支付
+     * @returns
+     */
+	order();
+	updateQrOk = 0;
+	updateQrImg= 0;
+	updateQrNo = 0;
+     //订单监控  {订单监控}
+	function order(){
+        $.get("Ycode_Get.html",{trade_no: "{$order.trade_no}"},function(result){
+			//成功
+     		if(result.code == '200' && updateQrOk==0){
+				updateQrOk==1;
+				$("#divTime").html("<small style='color:red; font-size:22px'>"+ result.msg +"</small>");
+				$("#qrcode").html('<img id="qrcode_load" src="/assets/img/pay_console/pay_ok.png">');//支付成功
+ 				//回调页面
+         		window.clearInterval(orderlst);
+				layer.msg('支付成功，正在跳转中...');
+				window.location.href=result.url;
+     		}
+     		//支付二维码
+     		if(result.code == '100' && updateQrImg==0){
+ 				updateQrImg = 1;
+				$("#qrcode").html('<img id="qrcode_load" src="'+ result.qr_url +'">');
+				//二维码获取成功
+				if("{$order.typedata}"=='alipay')
+				{
+				    if(!isMobilCheck())
+    				{
+    				    $("#startApp").attr("href", "{$order.h5_qrurl}");
+    				    $("#startApp").show();
+    				    $("#startApp_text").show();
+    				    
+    				}
+				}
+				if("{$order.typedata}"=='wxpay')
+				{
+				    if(!isMobilCheck())
+    				{
+    				    $("#startApp").attr("href", "{$order.h5_qrurl}");
+		    			$("#startApp").show();
+		    			$("#startApp_text").show();
+    				}
+				}
+				
+			}
+         	//订单已经超时
+     		if(result.code == '0' && updateQrNo==0){
+				updateQrNo==1;
+				$("#divTime").html("<small style='color:red; font-size:22px'>"+ result.msg +"</small>");
+     			window.clearInterval(orderlst);
+     			layer.confirm(result.msg, {
+     			  icon: 2,
+     			  title: '支付失败',
+   				  btn: ['确认'] //按钮
+   				}, function(){
+					location.href="/";
+   				});
+         	}
+			
+     	},"JSON");
+	}
+	
+	/**
+     * 检验是否手机版，手机版直接跳转到APP支付
+     * @returns
+     */
+    function isMobilCheck() {
+    	var userAgentInfo = navigator.userAgent;
+    	var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+    	var flag = true;
+    	for (var v = 0; v < Agents.length; v++) {
+    		if (userAgentInfo.indexOf(Agents[v]) > 0) {
+    			flag = false;
+    			break;
+    		}
+    	}
+    	return flag;
+    }
+    
+    
+	//周期监听 
+	orderlst = window.setInterval(function () {
+		order();
+	}, 2000); 
+	
+</script>
+{if condition="$tixing == '1'"}
+<script>
+    
+    speckText(0)
+    function speckText(str){
+        var url = "/assets/yuyin.mp3";
+        var voiceContent = new Audio(url);
+        voiceContent.src = url;
+        voiceContent.play();
+    }
+</script>
+{/if}
+</body>
+</html>

@@ -1,0 +1,168 @@
+﻿a{
+	-webkit-transition:all 0.35s ease-in-out;
+	-moz-transition:all 0.35s ease-in-out;
+	-ms-transition:all 0.35s ease-in-out;
+	-o-transition:all 0.35s ease-in-out;
+	transition:all 0.35s ease-in-out;
+	color:#333;
+}
+/*======================================== Header Design ========================================*/
+.navbar{
+	padding: 5px 0;
+	-webkit-box-shadow:0 0 5px rgba(0,91,234,0.3);
+	-ms-box-shadow:0 0 5px rgba(0,91,234,0.3);
+	-moz-box-shadow:0 0 5px rgba(0,91,234,0.3);
+	box-shadow:0 0 5px rgba(0,91,234,0.3);
+}
+.navbar .navbar-brand{
+	padding:4px 0;
+}
+.navbar .navbar-nav .nav-link{
+	padding: 13px 10px;
+    font-size: 15px;
+    color: #223b54;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.navbar .navbar-nav .nav-item.btn-reg .nav-link{
+	padding: 12.5px 19.5px;
+	border-radius:25px;
+	text-transform:uppercase;
+	-webkit-box-shadow:0 6px 27px rgba(0,91,234,0.3);
+	-ms-box-shadow:0 6px 27px rgba(0,91,234,0.3);
+	-moz-box-shadow:0 6px 27px rgba(0,91,234,0.3);
+	box-shadow:0 6px 27px rgba(0,91,234,0.3);
+	display: inline-block;
+	line-height: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 0.83vw;
+	border: 1px solid #fff;
+	margin-top: 5px;
+	color: #fff;
+	text-transform: uppercase;
+	-webkit-box-shadow: 0 6px 27px rgba(0,91,234,0.3);
+	-ms-box-shadow: 0 6px 27px rgba(0,91,234,0.3);
+	-moz-box-shadow: 0 6px 27px rgba(0,91,234,0.3);
+	font-size: 14px;
+	/* margin-top: 5px; */
+	border: 1px solid #3c3ccd;
+	color: #3d3dce;
+	background: #ffffff;
+}
+.navbar .navbar-nav .nav-item.btn-login .nav-link{
+	background:#3d3dce;
+	color:#fff;
+	padding: 13px 20px;
+	border-radius:25px;
+	text-transform:uppercase;
+	-webkit-box-shadow:0 6px 27px rgba(0,91,234,0.3);
+	-ms-box-shadow:0 6px 27px rgba(0,91,234,0.3);
+	-moz-box-shadow:0 6px 27px rgba(0,91,234,0.3);
+	box-shadow:0 6px 27px rgba(0,91,234,0.3);
+	display: inline-block;
+	line-height: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 14px;
+	border: 1px solid #fff;
+	background: rgb(67,122,249);
+	margin-top: 5px;
+}
+.navbar .navbar-nav .nav-item.btn-login .nav-link.active{
+	color:#fff;
+}
+
+.navbar .navbar-nav .nav-item.btn-reg .nav-link:hover{
+	background:rgba(0,91,234,0.3);
+}
+.navbar .navbar-nav .nav-item.btn-login .nav-link:hover{
+	background:#333333;
+}
+.navbar .navbar-nav .nav-item.btn-login{
+	margin-left: 5px;
+}
+.navbar .navbar-nav .nav-item{
+	margin-left:15px;
+}
+.navbar .navbar-nav .nav-item:first-child{
+	margin:0;
+}
+.navbar .navbar-nav .nav-item .nav-link.active,
+.navbar .navbar-nav .nav-link:hover{
+	color:#3d3dce;
+} 
+.navbar-toggler{
+	padding:0;
+	outline:none;
+	border:none;
+}
+.navbar-toggler-icon{
+	display: inline-block;
+	width: 40px;
+	height: 3px;
+	background: #f00;
+	position: relative;
+	transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out;
+}
+.navbar-toggler-icon:before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: -11px;
+    width: 100%;
+    height: 3px;
+    background: #000;
+    border-radius: 4px;
+    transition: all 0.35s ease-out;
+    -webkit-transition: all 0.35s ease-out;
+    backface-visibility: hidden;
+}
+.navbar-toggler-icon:after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: -11px;
+    width: 100%;
+    height: 3px;
+    background: #000;
+    border-radius: 4px;
+    transition: all 0.35s ease-out;
+    -webkit-transition: all 0.35s ease-out;
+    backface-visibility: hidden;
+}
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon{
+    background: rgba(0, 0, 0, 0);
+}
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon:before {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    top: 0px;
+}
+.navbar-toggler:not(.collapsed) .navbar-toggler-icon:after {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    bottom: 0px;
+}
+/*======================================== Banner Design =============================*/
+@media (max-width: 991.98px) {
+.navbar .navbar-nav .nav-item {
+    margin-left: 0;
+}
+.navbar .navbar-nav .nav-link{
+	padding:8px 0px;
+}
+
+.navbar .navbar-nav .nav-item.btn-reg{
+    margin: 10px 0 0;
+    text-align: center;
+}
+.navbar .navbar-nav .nav-item.btn-login{
+    margin: 10px 0 0;
+    text-align: center;
+}
+}

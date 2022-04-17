@@ -1,0 +1,69 @@
+<div class="tab-content">
+    <div class="tab-pane active" id="info2">
+        <div class="well">
+            以下为选定广告的JS调用代码
+        </div>
+        <div class="panel panel-default">
+          
+            <div class="panel-body">
+                <xmp id="copycontent"><script src='{$url}' language='javascript'></script></xmp>
+                <a href="javascript:;" id="copybtn" class="btn btn-primary btn-refresh" title="复制">复制</a>
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>
+                    预览
+                </strong>
+            </div>
+            <div class="panel-body">
+                <script src='{$url}' language='javascript'></script>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>
+                    格式(备注：单图和代码都只会返回一条记录)
+                </strong>
+            </div>
+            <div class="panel-body">
+宽高为0的会自动转为auto
+<xmp>
+单图类型JS调用返回：
+例：
+<img src="广告图片地址" width="设定宽度" height="设定高度" alt="广告标题" />
+
+多图类型JS调用返回:
+例：
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+    	<div class="swiper-slide">
+    		<img src="广告图片地址1" width="设定宽度" height="设定高度" alt="广告标题" />
+    	</div>
+    	<div class="swiper-slide">
+    		<img src="广告图片地址2" width="设定宽度" height="设定高度" alt="广告标题" />
+    	</div>
+    </div>
+</div>
+代码类型JS调用返回:
+直接返回 广告的文本内容
+例：
+<script>alert(1)</script>
+</xmp>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

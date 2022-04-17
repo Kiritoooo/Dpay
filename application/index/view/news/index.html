@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>帮助中心</title>
+    <link href="/assets/file/front/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/assets/file/main/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/assets/file/main/jquery.form.js"></script>
+</head>
+<body>
+    <div id="logo">
+        <h1>
+            <a href="/">
+                <img src="{$site.logo|htmlentities}" style="float:left;" width="240" height="80" />
+            </a>
+            <span class="logo_span"> 商户管理中心</span>
+        </h1>
+        <ul id="logo_right"></ul>
+    </div>
+    <div id="nav_bg"></div>
+    <div id="nav_bj">
+        <ul class="nav">
+            <li><a href="/" class="current">系统公告</a></li>
+        </ul>
+    </div>
+    <div id="body">
+        <div id="box" class="body_lb">
+            <ul class="gglb">
+        {volist name="list" id="vo"}
+            <li>
+                <a href="anninfo/id/{$vo.id}" title="" target="_blank" style="color:red">
+                    {$vo.pubtitle}
+                </a>
+                <span>{$vo.createtime|date="Y-m-d H:i:s",###}</span>
+            </li>
+        {/volist}
+
+    </ul>
+    <div class="notice_qieye">
+        {$page->render()}
+    </div>
+
+   
+        </div>
+    </div>
+    <div id="footer">
+        <p>
+            Copyright @ 2017~{:date('Y',time())} 版权所有
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="28" viewBox="0 0 42 28">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_274" data-name="矩形 274" width="28" height="28" transform="translate(1866 152) rotate(-90)" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="too-arrow" transform="translate(-640 -1282)">
+    <g id="蒙版组_12" data-name="蒙版组 12" transform="translate(-1226 1158)" clip-path="url(#clip-path)">
+      <path id="联合_8" data-name="联合 8" d="M0,14.563,6.95,8,0,1.441,1.526,0l6.95,6.563h0L10,8,8.476,9.441h0L1.526,16Z" transform="translate(1875 130)" fill="#fff"/>
+    </g>
+    <g id="蒙版组_13" data-name="蒙版组 13" transform="translate(-1212 1158)" clip-path="url(#clip-path)">
+      <path id="联合_9" data-name="联合 9" d="M0,14.563,6.95,8,0,1.441,1.526,0l6.95,6.563h0L10,8,8.476,9.441h0L1.526,16Z" transform="translate(1875 130)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

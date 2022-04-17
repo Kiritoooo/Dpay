@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>{$site.name|htmlentities} - 测试支付</title>
+    <link href="//cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container">
+    <div class="col-xs-12 col-sm-10 col-lg-8 center-block" style="float: none;">
+    <div class="page-header">
+      <h4>{$site.name|htmlentities} - 测试支付<a href="/" class="pull-right"><small>返回首页</small></a></h4>
+    </div>
+    <div class="panel panel-primary">
+    <div class="panel-body">
+    
+    <form name="alipayment">
+    <div class="input-group">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
+    <input class="form-control" placeholder="商户订单号" value="系统自动生成" name="trade_no" type="text" disabled="">
+    </div>
+    <br>
+    <div class="input-group">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-shopping-cart"></span></span>
+    <input class="form-control" placeholder="商品名称" value="支付测试" name="name" type="text" disabled="" >
+    </div>
+    <br>
+    <div class="input-group">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-yen"></span></span>
+    <input class="form-control" placeholder="付款金额" value="1" name="money" type="text" required="">	        
+    </div>        			
+    <br>
+    <center>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+      <button type="button" name="type" value="1" class="btn btn-default" onclick="submitPay(this)"><img src="/assets/icon/alipay.ico" height="18">&nbsp;支付宝</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" name="type" value="2" class="btn btn-default" onclick="submitPay(this)"><img src="/assets/icon/wxpay.ico" height="18">&nbsp;微信支付</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" name="type" value="3" class="btn btn-default" onclick="submitPay(this)"><img src="/assets/icon/qqpay.ico" height="18">&nbsp;QQ支付</button>
+    </div>
+    </div>
+    </center>
+    </form>
+    </div>
+    <div class="panel-footer text-center">
+    {$site.name|htmlentities} © 2021 All Rights Reserved.
+    </div>
+    </div>
+    </div>
+    </div>
+    <script src="//cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="//cdn.staticfile.org/layer/3.1.1/layer.min.js"></script>
+    <script>
+    function submitPay(obj){
+    	
+    	var money=$("input[name='money']").val();
+    	var typeid=$(obj).val();
+    	if(money==''){
+    		layer.alert("金额不能为空");
+    		return false;
+    	}
+    	var ii = layer.load();
+    	$.ajax({
+    		type: "POST",
+    		dataType: "json",
+    		data: {money:money, typeid:typeid},
+    		url: "/index/index/testpay",
+    		success: function (data, textStatus) {
+    			layer.close(ii);
+    			document.write(data);
+    		},
+    		error: function (data) {
+    			layer.msg('服务器错误', {icon: 2});
+    		}
+    	});
+    	return false;
+    }
+    </script>
+</body>
+</html>

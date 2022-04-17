@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta http-equiv="Expires" content="0">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-control" content="no-cache">
+        <meta http-equiv="Cache" content="no-cache">
+        <title>开发者中心_{$site.name|htmlentities}</title>
+        <meta name="author" content="nish">
+        <link rel="stylesheet" href="/assets/work/public.css">
+        <link rel="stylesheet" href="/assets/work/animate.min.css">
+        <link rel="stylesheet" href="/assets/work/swiper.min.css">
+        <link rel="stylesheet" href="/assets/work/style.css">
+        <link rel="stylesheet" href="/assets/work/pstyle.css">			
+        <script src="/assets/work/jquery.min.js"></script>
+        <script src="/assets/work/wow.min.js"></script>
+        <script src="/assets/work/swiper.min.js"></script>
+        <script src="/assets/work/swiper.animate.min.js"></script>
+        <script src="/assets/work/jquery.SuperSilde.js"></script>
+        <script src="/assets/work/common.js"></script>
+        <script src="/assets/work/photoswipe.js"></script>
+        <script src="/assets/work/photoswipe-ui-default.min.js"></script>
+        <script src="/assets/work/previewImage.js"></script>
+        <link rel="stylesheet" href="/assets/work/sucai.css">
+		<link rel="stylesheet" href="/assets/work/demo.css">
+		<link rel="stylesheet" href="/assets/work/deme.css">
+		<link rel="stylesheet" href="/assets/work/kefu.css" type="text/css">
+        <link rel="stylesheet" href="/assets/work/layui1.css" media="all">
+        <link rel="stylesheet" href="/assets/work/qietu.css">
+        <link rel="stylesheet" href="/assets/work/style(1).css">
+        <link rel="stylesheet" href="/assets/work/animate.min(1).css">
+        <link rel="stylesheet" href="/assets/work/style7.css">
+        <link rel="stylesheet" href="/assets/work/responsive1.css">
+        <link rel="stylesheet" href="/assets/work/layui1.css" media="all">
+        <script type="text/javascript">
+        $(document).ready(function(){
+        
+        	$(".side ul li").hover(function(){
+        		$(this).find(".sidebox").stop().animate({"width":"124px"},200).css({"opacity":"1","filter":"Alpha(opacity=100)","background":"#ae1c1c"})	
+        	},function(){
+        		$(this).find(".sidebox").stop().animate({"width":"54px"},200).css({"opacity":"0.8","filter":"Alpha(opacity=80)","background":"#000"})	
+        	});
+        	
+        });
+        
+        //回到顶部
+        function goTop(){
+        	$('html,body').animate({'scrollTop':0},300);
+        }
+        </script>
+<style type="text/css">
+       .pcbdmap{display: block;}
+        @media (max-width: 768px){.pcbdmap{display: none;}
+	</style>
+    </head>
+  <body style="">
+
+	<nav class="navbar navbar-expand-lg fixed-top bg-white">
+		<div class="container">
+			<a class="navbar-brand" href="/">
+
+			</a>
+			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse" id="main-nav" style="">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link active" href="/">首页</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="{:url('index/index/work')}">插件下载</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/SDK">支付测试</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{:url('index/news/index')}">公告中心</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="https://easydoc.net/doc/95137535/oyLJ2AHp/1K77TFiR">对接文档</a>
+					</li>
+		
+					<li class="nav-item">
+						<a class="nav-link" href="{:url('index/user/index')}">管理中心</a>
+					</li>
+				</ul>			
+			 <ul class="layui-nav" lay-filter="ew-header-nav">
+           
+        <span class="layui-nav-bar" style="left: 0px; top: 65px; width: 0px; opacity: 0;"></span></ul>
+			</div>
+		</div>
+	</nav>
+    
+
+<div class="banner">
+</div>
+<!-- END NetEase Devilfish 下拉 -->
+
+<div class="pay" id="ruanjian">
+	<div class="wrapper">
+		<div class="pay-hd g-hd">
+			<h2 class="wow fadeInUp   animated" style="visibility: visible; animation-name: fadeInUp;">软件下载</h2>
+			</div>
+		<div class="pay-bd">
+			<ul>
+			<li class="wow fadeInLeft   animated animated" style="visibility: visible; animation-name: fadeInLeft;">
+						<img height="60" width="60" src="/assets/work/kfz_php.png">
+						    <div class="ver-txt">
+						    <p>
+									<span class="name">PHP_DEMO</span>
+									<span class="version">对接Demo文档</span>
+								</p>
+						    </div>
+						    <a class="ver-href open-v1" target="_blank" href="/SDK/SDK.zip">立即下载</a>
+						</li>
+						<li class="wow fadeInLeft   animated" style="visibility: visible; animation-name: fadeInLeft;">
+							<img height="60" width="60" src="/assets/work/t01c05fab81f671f879.png">
+						    <div class="ver-txt">
+						    <p>
+									<span class="name">APP手机监控</span>
+									<span class="version">适用安卓监控端</span>
+								</p>
+						    </div>
+						    <a class="ver-href open-v1" target="_blank" href="{$site.app_down|htmlentities}">立即下载</a>
+						</li>
+					
+					
+					</ul>
+				</div>
+			</div>
+	
+		<div class="pay" id="price">
+	<div class="wrapper">
+		<div class="pay-hd g-hd">
+			<h2 class="wow fadeInUp   animated" style="visibility: visible; animation-name: fadeInUp;">已对接支付插件</h2>
+			</div>
+		<div class="pay-bd">
+			<ul>
+			            
+						<li class="wow fadeInLeft   animated" style="visibility: visible; animation-name: fadeInLeft;">
+							<img height="60" width="60" src="/assets/work/kfz_php.png">
+						    <div class="ver-txt">
+						    <p>
+									<span class="name">WordPress程序插件</span>
+									<span class="version">日主题支付插件</span>
+								</p>
+						    </div>
+						    <a class="ver-href open-v1" target="_blank" href="https://ssailili.lanzoui.com/iD0LCtl7eij?w">立即下载</a>
+						</li>
+						<li class="wow fadeInLeft   animated" style="visibility: visible; animation-name: fadeInLeft;">
+							<img height="60" width="60" src="/assets/work/kfz_php.png">
+						    <div class="ver-txt">
+						    <p>
+									<span class="name">总裁主题程序插件</span>
+									<span class="version">对接本站支付插件</span>
+								</p>
+						    </div>
+						    <a class="ver-href open-v1" target="_blank" href="https://ssailili.lanzoui.com/iwAdbq3v2li">立即下载</a>
+						</li>
+					</ul>
+				</div>
+			</div>	
+</div>
+</div>
+
+<script type="text/javascript" src="/assets/work/jquery.js"></script>
+<div class="side">
+</div>
+        <div class="footer" id="women">
+            <div class="w1200 footer-content">
+                <ul class="buzhou-box clear">
+                    <li class="col-lg-3 col-sm-6 iconfont iconzhuce">
+                        <span class="buzhou-num">
+                            1
+                        </span>
+                        <span>
+                            注册商户
+                        </span>
+                    </li>
+                    <li class="col-lg-3 col-sm-6 iconfont iconlianxi">
+                        <span class="buzhou-num">
+                            2
+                        </span>
+                        <span>
+                            配置账户
+                        </span>
+                    </li>
+                    <li class="col-lg-3 col-sm-6 iconfont iconhezuo">
+                        <span class="buzhou-num">
+                            3
+                        </span>
+                        <span>
+                            对接测试
+                        </span>
+                    </li>
+                    <li class="col-lg-3 col-sm-6 iconfont iconjishu">
+                        <span class="buzhou-num">
+                            4
+                        </span>
+                        <span>
+                            上线使用
+                        </span>
+                    </li>
+                </ul>
+                <div class="clear footer-line2">
+                    <a class="footer-logo" href="/">
+                    </a>
+                    <ul class="footer-link inline">
+                        <li>
+                            <a href="/">
+                                支付测试
+                            </a>
+                        </li>
+                        /
+                        <li>
+                            <a href="/">
+                                开发者中心
+                            </a>
+                        </li>
+                        /
+                        <li>
+                            <a href="/">
+                                联系我们
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+            <div class="copyright">
+                <a href="javascript:;">
+                    Copyright @ 2017~{:date('Y',time())} 版权所有
+                </a>
+                
+
+            </div>
+        </div>
+    
+    <!-- jQuery -->
+    <script src="/assets/work/bootstrap.min.js"></script>
+    <script src="/assets/work/jquery.easing.min.js"></script>  
+    <script src="/assets/work/script.js"></script>
+    </div></body></html>

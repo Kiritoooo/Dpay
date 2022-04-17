@@ -1,0 +1,258 @@
+<style>
+    .basicinfo {
+        margin: 15px 0;
+    }
+
+    .basicinfo .row > .col-xs-4 {
+        padding-right: 0;
+    }
+
+    .basicinfo .row > div {
+        margin: 5px 0;
+    }
+</style>
+<style type="text/css">
+	[v-cloak] { display: none }
+	.bg-card-blue{
+		background: linear-gradient(-125deg, #57bdbf, #2f9de2);
+		color: #ffffff;
+	}
+	.bg-card-red{
+		background: linear-gradient(-125deg, #ff7d7d, #fb2c95);
+		color: #ffffff;
+	}
+	.bg-card-violet {
+	    background: linear-gradient(-113deg, #c543d8, #925cc3);
+		color: #ffffff;
+	}
+	.bg-card-primary {
+	    background: linear-gradient(-141deg, #ecca1b, #f39526);
+		color: #ffffff;
+	}
+	.wanlcard .small-box,.panel{
+		border-radius: 10px;
+	}
+	.wanlcard .small-box > .inner{
+		padding: 15px 22px;
+	}
+	.wanlcard .small-box > .inner p:last-child{
+		font-size: 12px;
+	}
+	.wanlcard .small-box p{
+		font-size: 14px;
+		margin: 10px 0;
+	}
+	.wanlcard .small-box h3{
+		font-weight: 100;
+	}
+	.wanlcard .small-box .icon{
+		color: rgba(255, 255, 255, 0.16);
+		right: 22px;
+	}
+	
+	.small-box .icon{
+		font-size: 80px;
+	}
+	
+	.panel-statistics h3 {
+	    font-weight: 500;
+	    font-size: 14px;
+	    color: #333;
+		margin-top: 9.2px;
+	}
+	
+	.panel-statistics h4{
+		color: #666;
+		font-weight: 400;
+		font-size: 14px;
+	}
+	.panel-btn{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: -9px;
+	}
+	.wanl-order .panel{
+		background: linear-gradient(-125deg, #57bdbf, #2f9de2);
+	}
+	.wanl-order .panel h3{
+		font-weight: 500;
+	}
+	.wanl-order .panel h3, .wanl-order .panel h4{
+		color: #ffffff;
+	}
+	.wanl-order .pull-left .fa{
+		color: #ffffff;
+		font-size: 30px;
+	}
+	.wanllist .panel-statistics h4 {
+	    color: #555;
+	    font-weight: bold;
+	    font-size: 18px;
+	}
+	.wanllist .panel-statistics thead{
+		color: #777777;
+	}
+	.vertical{
+		vertical-align: middle;
+	}
+	
+	.table > thead > tr > th, 
+	.table > thead > tr > td, 
+	.table > tbody > tr > th, 
+	.table > tbody > tr > td
+	{
+		padding: 12px 0;
+		font-weight: initial;
+	}
+	
+	.table > tbody > tr > td:first-child {
+		color: #666666;
+	}
+</style>
+
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {include file="common/sidenav" /}
+        </div>
+        <div class="col-md-9">
+            <div class="alert alert-warning-light">
+                        您好，欢迎使用本系统，平台每日会对交易流水大的商户进行抽查,请不要用于违规站点!严禁一切淫秽、涉赌、钓鱼、理财、借贷、侵权、封建迷信等非法网站的接入！私自接入将冻结账户，有疑问请咨询客服
+                    </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="page-header">
+                        {:__('Member center')}
+                        <a href="{:url('user/profile')}" class="btn btn-success pull-right"><i class="fa fa-pencil"></i>
+                            {:__('Profile')}</a>
+                    </h2>
+                    
+                    <div class="row user-baseinfo">
+                        
+
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <!-- Content -->
+                            <div class="ui-content">
+                                <div class="basicinfo">
+                                    <div class="row">
+                                        <div class="col-xs-4 col-md-2">{:__('Money')}</div>
+                                        <div class="col-xs-8 col-md-4">
+                                            <a href="javascript:;" class="viewmoney">{$user.money}</a>
+                                        </div>
+                                        <div class="col-xs-4 col-md-2">{:__('Score')}</div>
+                                        <div class="col-xs-8 col-md-4">
+                                            <a href="javascript:;" class="viewscore">{$user.score}</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-4 col-md-2">{:__('Successions')}</div>
+                                        <div class="col-xs-8 col-md-4">{$user.successions} {:__('Day')}</div>
+                                        <div class="col-xs-4 col-md-2">{:__('Maxsuccessions')}</div>
+                                        <div class="col-xs-8 col-md-4">{$user.maxsuccessions} {:__('Day')}</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-4 col-md-2">{:__('Logintime')}</div>
+                                        <div class="col-xs-8 col-md-4">{$user.logintime|date="Y-m-d H:i:s",###}</div>
+                                        <div class="col-xs-4 col-md-2">{:__('Prevtime')}</div>
+                                        <div class="col-xs-8 col-md-4">{$user.prevtime|date="Y-m-d H:i:s",###}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+					</div>
+                </div>
+                
+                <div class="row wanlcard">
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-card-blue">
+            <div class="inner">
+				<p>{$alicount} 个</p>
+                <p>平台支付宝通道统计</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-sitemap"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-card-red">
+            <div class="inner">
+    			<p>{$wxcount} 个</p>
+    			<p>平台微信通道统计</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+        </div>
+    </div>
+	<div class="col-lg-3 col-xs-6">
+	    <div class="small-box bg-card-violet">
+	        <div class="inner">
+				<p>{$alicountoff} 个</p>
+	            <p>支付宝启用通道</p>
+	        </div>
+	        <div class="icon">
+	            <i class="fa fa-user-circle"></i>
+	        </div>
+	    </div>
+	</div>
+	<div class="col-lg-3 col-xs-6">
+	    <div class="small-box bg-card-primary">
+	        <div class="inner">
+				<p>{$wxcountoff} 个</p>
+	            <p>微信启用通道</p>
+	        </div>
+	        <div class="icon">
+	            <i class="fa fa-user"></i>
+	        </div>
+	    </div>
+	</div>
+</div>
+                <div class="row">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-6 col-lg-3" style="margin-bottom:15px;">
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <h3>平台总流水</h3>
+                        <h4>￥{$allmoney}</h4>
+                    </div>
+                </div>
+            </div>
+			<div class="col-xs-6 col-lg-3" style="margin-bottom:15px;">
+			    <div class="panel panel-default panel-intro panel-statistics">
+			        <div class="panel-body">
+			            <h3>今日订单金额</h3>
+			            <h4>￥{$daymoney}</h4>
+			        </div>
+			    </div>
+			</div>
+            <div class="col-xs-6 col-lg-3" style="margin-bottom:15px;">
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <h3>平台总订单</h3>
+                        <h4> {$allmoneycount}个</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-lg-3" style="margin-bottom:15px;">
+                <div class="panel panel-default panel-intro panel-statistics">
+                    <div class="panel-body">
+                        <h3>今日总订单</h3>
+						<h4>{$daymoneycount} 个</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                
+            </div>
+        </div>
+        
+    </div>
+</div>

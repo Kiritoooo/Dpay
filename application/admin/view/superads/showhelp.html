@@ -1,0 +1,203 @@
+
+<div>
+	<div class="panel panel-default">
+                    <div class="panel-heading" id="heading-0">
+                        <h4 class="panel-title">
+                            <span class="label label-success">GET</span>
+                            <a data-toggle="collapse" data-parent="#accordion0" href="#collapseOne0" aria-expanded="true"> 超级广告 <span class="text-muted"></span></a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne0" class="panel-collapse collapse in" aria-expanded="true" style="">
+                        <div class="panel-body">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" id="doctab0">
+                                <li class="active"><a href="#info0" data-toggle="tab" aria-expanded="false">广告基础调用</a></li>
+                                <li class=""><a href="#sandbox0" data-toggle="tab" aria-expanded="true">广告接口调用</a></li>
+                                <li class=""><a href="#sandbox1" data-toggle="tab" aria-expanded="true">公告调用</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                                <div class="tab-pane active" id="info0">
+                                    <div class="well">
+                                        控制器文件调用:
+<xmp>
+第一步：
+$Superads = new \addons\superads\controller\Index;
+
+第二步获取数据:
+$result = $Superads->getadsbytag('标记名称');//使用标记调用单个
+$result = $Superads->getadsbyid('ID');//使用ID调用单个
+
+$result = $Superads->getadslistall();//调用所有
+
+//发送到模板文件
+$this->assign('adsdata',$result);
+
+
+第三步渲染:
+//模板文件直接使用以下方式循环调用
+{literal}
+{volist name="$adsdata['adslist']" id="vo"}
+  <img src="{$vo.localimg}" width="{$adsdata.adswidth}" height="{$adsdata.adsheight}" title="{$vo.imgtitle}" />
+{/volist}
+{/literal}
+</xmp>
+                                    </div>
+
+
+
+                                </div><!-- #info -->
+
+                                <div class="tab-pane " id="sandbox0">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                             <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>返回内容和字段信息</strong></div>
+                                                <div class="panel-body">
+<div class="well">
+<pre>    
+调用方式GET：
+
+调用单个广告:
+
+/api/Superads/getsuperadsbytag?tagname='广告标记'
+参数 tagname
+
+或者使用ID调用
+
+/api/Superads/getsuperadsbyid?id='广告ID'
+参数 id
+
+一般你应该不会使用到此接口
+调用全部广告
+/api/Superads/getsuperadsall
+</pre>
+
+</div>
+ 
+<pre>
+    返回：
+{
+    "id": 3,
+    "adsname": "首页底部代码广告",
+    "adstag": "index_footer",
+    "adswidth": 200, //宽度---为0时会转为auto
+    "adsheight": 300,//高度---为0时会转为auto
+    "typedata": "3",//1单图 2多图 3代码
+    "createtime": 1606987262,
+    "memo": "备注信息",
+    "status": "1",
+    "adslist": [{ //广告具体内容信息列表
+        "id": 4,
+        "imgtitle": "广告标题",
+        "superads_id": 3, //广告所属分类ID
+        "isforeverdata": "1",//1永久有效 0限定时间内有效
+        "clickhref": "点击地址",
+        "adscontent": "文本内容或代码",
+        "adsimage": "广告图片",
+        "localimg":"广告图片绝对地址-cdn图片请使用此字段",
+        "createtime": 1606987290,
+        "livestime": 1606987267,
+        "liveetime": 1606987267,
+        "memo": "备注信息",
+        "status": "1",//1为启用0为不启用
+        "isforeverdata_text": "Isforeverdata 1",
+        "livestime_text": "2020-12-03 17:21:07",
+        "liveetime_text": "2020-12-03 17:21:07",
+        "status_text": "Status 1"
+    }],
+    "typedata_text": "Typedata 3",
+    "status_text": "Status 1"
+}
+
+</pre>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- #sandbox -->
+                                <div class="tab-pane " id="sandbox1">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                             <div class="panel panel-default">
+                                                <div class="panel-heading"><strong>公告信息调用</strong></div>
+                                                <div class="panel-body">
+
+<pre>
+注意：公告信息只会返回一条记录
+
+$Publist = new \addons\superads\controller\Publist;
+$data = $Publist->getpublistone('标记名称');
+$this->assign('pubanno',$data);
+模板页面渲染使用
+{literal}
+{$pubanno->publicontent} //调用模板内容
+{/literal}
+等其他字段
+
+
+接口调用
+GET 
+/api/Superads/getpublistone?tagname="标记名称"
+参数 tagname
+返回值：
+
+{
+    "code": 1,
+    "msg": "返回成功",
+    "time": "1607304312",
+    "data": {
+        "id": 1,
+        "pubtitle": "公告标题",
+        "publicontent": "公告内容的啊实打实大按时打算打算打",
+        "isforeverdata": "1",
+        "pubtag": "tagname",
+        "isforeverdata_text": "Isforeverdata 1",
+        "pubimage": "/uploads/20201202/40f02459ae7ab66a4ebed5b0dda6ac99.png",
+        "createtime": 1606873179,
+        "livestime": 1606873152,
+        "liveetime": 1608169152,
+        "memo": "1111",
+        "status": "1",
+        "localurl": "http://www.test.com/uploads/20201202/40f02459ae7ab66a4ebed5b0dda6ac99.png",
+        "livestime_text": "2020-12-02 09:39:12",
+        "liveetime_text": "2020-12-17 09:39:12",
+        "status_text": "Status 1",
+        "createtime_text": "2020-12-02 09:39:39"
+    }
+}
+
+</pre>
+
+
+
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                     </div>   
+                                </div>
+                            </div><!-- .tab-content -->
+                        </div>
+                    </div>
+                </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+
+<div class="panel panel-default panel-intro">
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <form id="edit-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+                        <table class="table table-striped">
+
+                            <tbody>
+
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-xs-12">
+
+
+                                            <dl class="fieldlist" data-name="langsset">
+                                                <dd>
+                                                    <ins>{:__('语言名称')}</ins>
+                                                    <ins>{:__('语言文件名')}</ins>
+                                                </dd>
+                                                <dd class="form-inline" fieldlist-item="true">
+                                                    <input type="text" name="langsset[0][key]"   data-rule="required"
+                                                           class="form-control" value="" size="10" placeholder="字母或中文">
+                                                    <input type="text" name="langsset[0][value]" class="form-control" value=""
+                                                           data-rule="required;diyname" placeholder="字母数字组合">
+
+                                                </dd>
+
+
+                                            </dl>
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+
+
+                        <table class="table table-striped">
+                            <thead>
+                            </thead>
+                            <tbody>
+
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-xs-12">
+
+
+                                            <dl class="fieldlist" data-name="langs">
+                                                <dd>
+                                                    <ins>{:__('键')}</ins>
+                                                    <ins>{:__('值')}</ins>
+                                                </dd>
+                                                <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i> {:__('Append')}</a></dd>
+                                                <textarea name="langs" class="form-control hide" cols="30" rows="5">
+
+                                                </textarea>
+                                            </dl>
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            </tbody>
+                            <tfoot>
+                            <tr>
+
+                                <td>
+                                    <button type="submit" class="btn btn-success btn-embossed">{:__('OK')}</button>
+                                    <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+                                </td>
+
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
