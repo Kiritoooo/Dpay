@@ -19,7 +19,7 @@ class Yuanpay
         $pay_qrcode =urlencode('alipays://platformapi/startapp?appId=20000123&actionType=scan&biz_data={"s": "money", "u": "'.$QR_row['zfb_pid'].'", "a": "'.$params['money'].'", "m": "'.$params['out_trade_no'].'"}');
         //组装H5地址
         $request = \think\Request::instance();
-        $h5 = "alipays://platformapi/startapp?appId=20000067&appClearTop=false&startMultApp=YES&showTitleBar=YES&showToolBar=NO&showLoading=YES&pullRefresh=YES&url=".$request->root(true) . "/index/pay/zfbh5.html?out_trade_no=".$params['out_trade_no'];
+        $h5 = 'alipays://platformapi/startapp?appId=60000105&url=https%3A%2F%2Fwww.alipay.com%2F%3FappId%3D20000123%26actionType%3Dscan%26biz_data%3D%257B%2522a%2522%253A%2522'.$params['money'].'%2522%252C%2522s%2522%253A%2522money%2522%252C%2522u%2522%253A%2522'.$QR_row['zfb_pid'].'%2522%252C%2522m%2522%253A%2522'.$params['out_trade_no'].'%2522%257D';
         $ip = request()->ip();
         $data = [
                 'trade_no' =>$trade_no, 
@@ -67,7 +67,7 @@ class Yuanpay
         $pay_qrcode =urlencode('alipays://platformapi/startapp?appId=20000123&actionType=scan&biz_data={"s": "money", "u": "'.$QR_row['zfb_pid'].'", "a": "'.$truemoney.'", "m": "'.$params['out_trade_no'].'"}');
         //组装H5地址
         $request = \think\Request::instance();
-        $h5 = "alipays://platformapi/startapp?appId=20000067&appClearTop=false&startMultApp=YES&showTitleBar=YES&showToolBar=NO&showLoading=YES&pullRefresh=YES&url=".$request->root(true) . "/index/pay/zfbh5.html?out_trade_no=".$params['out_trade_no'];
+        $h5 = 'alipays://platformapi/startapp?appId=60000105&url=https%3A%2F%2Fwww.alipay.com%2F%3FappId%3D20000123%26actionType%3Dscan%26biz_data%3D%257B%2522a%2522%253A%2522'.$truemoney.'%2522%252C%2522s%2522%253A%2522money%2522%252C%2522u%2522%253A%2522'.$QR_row['zfb_pid'].'%2522%252C%2522m%2522%253A%2522'.$params['out_trade_no'].'%2522%257D';
         $ip = request()->ip();
         $data = [
                 'trade_no' =>$trade_no, 
@@ -351,3 +351,4 @@ class Yuanpay
     
     
 }
+
